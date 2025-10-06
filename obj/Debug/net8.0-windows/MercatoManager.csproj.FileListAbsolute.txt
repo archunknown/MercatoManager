@@ -12,3 +12,4 @@ C:\Users\ADMIN\Downloads\MercatoManager\obj\Debug\net8.0-windows\refint\MercatoM
 C:\Users\ADMIN\Downloads\MercatoManager\obj\Debug\net8.0-windows\MercatoManager.pdb
 C:\Users\ADMIN\Downloads\MercatoManager\obj\Debug\net8.0-windows\MercatoManager.genruntimeconfig.cache
 C:\Users\ADMIN\Downloads\MercatoManager\obj\Debug\net8.0-windows\ref\MercatoManager.dll
+C:\Users\ADMIN\Downloads\MercatoManager\obj\Debug\net8.0-windows\MercatoManager.sourcelink.json

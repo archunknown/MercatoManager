@@ -4,10 +4,10 @@ namespace MercatoManager.Models
 {
     public class Cliente
     {
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
-        public string DNI { get; set; }
-        public string Celular { get; set; }
+        public string Nombres { get; set; } = string.Empty;
+        public string Apellidos { get; set; } = string.Empty;
+        public string DNI { get; set; } = string.Empty;
+        public string Celular { get; set; } = string.Empty;
         public List<Producto> ProductosComprados { get; set; } = new List<Producto>();
 
         public decimal CalcularTotalGastado()

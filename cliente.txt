@@ -1,1 +1,16 @@
-[{"Nombres":"Prueba","Apellidos":"Pureba","DNI":"78999999","Celular":"777888888","ProductosComprados":[]},{"Nombres":"Hola","Apellidos":"eagea","DNI":"77777777","Celular":"888755442","ProductosComprados":[]}]
+[
+  {
+    "Nombres": "Pepe",
+    "Apellidos": "El Pollo",
+    "DNI": "77211144",
+    "Celular": "987777777",
+    "ProductosComprados": [
+      {
+        "Codigo": "6FEA6",
+        "Nombre": "Product1",
+        "Categoria": "RandomCate",
+        "Precio": 787
+      }
+    ]
+  }
+]

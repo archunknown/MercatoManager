@@ -22,12 +22,6 @@ namespace MercatoManager
         // ===================== CLIENTES =====================
         private void BtnAgregarCliente_Click(object sender, EventArgs e)
         {
-            var txtNombres = this.Controls.Find("txtNombres", true).FirstOrDefault() as TextBox;
-            var txtApellidos = this.Controls.Find("txtApellidos", true).FirstOrDefault() as TextBox;
-            var txtDNI = this.Controls.Find("txtDNI", true).FirstOrDefault() as TextBox;
-            var txtCelular = this.Controls.Find("txtCelular", true).FirstOrDefault() as TextBox;
-            var dgv = this.Controls.Find("dgvClientes", true).FirstOrDefault() as DataGridView;
-
             if (!Cliente.ValidarDNI(txtDNI.Text))
             {
                 MessageBox.Show("El DNI debe tener exactamente 8 dígitos numéricos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -50,8 +44,8 @@ namespace MercatoManager
 
             clientes.Add(nuevo);
             GuardarDatos(CLIENTES_FILE, clientes);
-            dgv.DataSource = null;
-            dgv.DataSource = clientes;
+            dgvClientes.DataSource = null;
+            dgvClientes.DataSource = clientes;
 
             txtNombres.Clear();
             txtApellidos.Clear();
@@ -65,12 +59,6 @@ namespace MercatoManager
         // ===================== PRODUCTOS =====================
         private void BtnAgregarProducto_Click(object sender, EventArgs e)
         {
-            var txtCodigo = this.Controls.Find("txtCodigo", true).FirstOrDefault() as TextBox;
-            var txtNombreProd = this.Controls.Find("txtNombreProd", true).FirstOrDefault() as TextBox;
-            var txtCategoria = this.Controls.Find("txtCategoria", true).FirstOrDefault() as TextBox;
-            var txtPrecio = this.Controls.Find("txtPrecio", true).FirstOrDefault() as TextBox;
-            var dgv = this.Controls.Find("dgvProductos", true).FirstOrDefault() as DataGridView;
-
             if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
             {
                 MessageBox.Show("El precio debe ser numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -87,8 +75,8 @@ namespace MercatoManager
 
             productos.Add(nuevo);
             GuardarDatos(PRODUCTOS_FILE, productos);
-            dgv.DataSource = null;
-            dgv.DataSource = productos;
+            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = productos;
 
             txtCodigo.Clear();
             txtNombreProd.Clear();
@@ -110,9 +98,6 @@ namespace MercatoManager
 
         private void CargarDatos()
         {
-            var dgvClientes = this.Controls.Find("dgvClientes", true).FirstOrDefault() as DataGridView;
-            var dgvProductos = this.Controls.Find("dgvProductos", true).FirstOrDefault() as DataGridView;
-
             if (File.Exists(CLIENTES_FILE))
             {
                 clientes = JsonSerializer.Deserialize<List<Cliente>>(File.ReadAllText(CLIENTES_FILE)) ?? new();
@@ -132,9 +117,7 @@ namespace MercatoManager
         // ========== TOTAL ==========
         private void ActualizarTotal()
         {
-            var lblTotal = this.Controls.Find("lblTotal", true).FirstOrDefault() as Label;
-            var cmb = this.Controls.Find("cmbClientes", true).FirstOrDefault() as ComboBox;
-            if (cmb?.SelectedItem is Cliente selected)
+            if (cmbClientes?.SelectedItem is Cliente selected)
             {
                 lblTotal.Text = $"Total Gastado: S/ {selected.CalcularTotalGastado():F2}";
             }
@@ -146,8 +129,6 @@ namespace MercatoManager
 
         private void UpdateCombos()
         {
-            var cmbClientes = this.Controls.Find("cmbClientes", true).FirstOrDefault() as ComboBox;
-            var cmbProductos = this.Controls.Find("cmbProductos", true).FirstOrDefault() as ComboBox;
             cmbClientes.DataSource = null;
             cmbClientes.DataSource = clientes;
             cmbClientes.DisplayMember = "Nombres";
@@ -163,8 +144,6 @@ namespace MercatoManager
 
         private void btnAsignar_Click(object sender, EventArgs e)
         {
-            var cmbClientes = this.Controls.Find("cmbClientes", true).FirstOrDefault() as ComboBox;
-            var cmbProductos = this.Controls.Find("cmbProductos", true).FirstOrDefault() as ComboBox;
             if (cmbClientes.SelectedItem is Cliente cliente && cmbProductos.SelectedItem is Producto producto)
             {
                 cliente.ProductosComprados.Add(producto);

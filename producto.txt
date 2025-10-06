@@ -1,0 +1,8 @@
+[
+  {
+    "Codigo": "6FEA6",
+    "Nombre": "Product1",
+    "Categoria": "RandomCate",
+    "Precio": 787
+  }
+]
